@@ -1,0 +1,41 @@
+{
+  "name": "eslint-plugin-microtemplates",
+  "version": "0.0.0",
+  "description": "ESLint plugin for linting Resig-style microtemplate strings.",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin",
+    "lodash",
+    "lodash-templates",
+    "micro-templates",
+    "resig-templates",
+    "underscore",
+    "underscore-templates"
+  ],
+  "author": "Kevin Partington",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "unit-test": "mocha ./tests/**/*.js",
+    "test": "npm run lint && npm run unit-test"
+  },
+  "dependencies": {
+    "lodash.template": "^3.6.2"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "eslint": "~1.6.0",
+    "mocha": "^2.3.4"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "MIT",
+  "directories": {
+    "test": "tests"
+  }
+}
