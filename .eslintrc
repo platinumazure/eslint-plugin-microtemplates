@@ -1,8 +1,9 @@
 {
     "rules": {
         "indent": [2, 4],
-        "quotes": [2, "double"],
         "linebreak-style": [2, "unix"],
+        "no-warning-comments": 2,
+        "quotes": [2, "double"],
         "semi": [2, "always"],
 	"valid-jsdoc": 2
     },
