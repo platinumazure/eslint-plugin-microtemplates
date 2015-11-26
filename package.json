@@ -23,9 +23,6 @@
     "unit-test": "mocha ./tests/**/*.js",
     "test": "npm run lint && npm run unit-test"
   },
-  "dependencies": {
-    "lodash.template": "^3.6.2"
-  },
   "devDependencies": {
     "chai": "^3.4.1",
     "eslint": "~1.6.0",
