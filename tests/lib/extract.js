@@ -42,20 +42,20 @@ describe("extract", function () {
             assert.strictEqual(result.length, 4);
 
             assert.strictEqual(result[0].code, "/*global print*/");
-            assert.notProperty(result[0], "line");
-            assert.notProperty(result[0], "column");
+            assert.notProperty(result[0], "originalLine");
+            assert.notProperty(result[0], "originalColumn");
 
             assert.strictEqual(result[1].code, "print('Hello, '); // eslint-disable-line");
-            assert.notProperty(result[1], "line");
-            assert.notProperty(result[1], "column");
+            assert.notProperty(result[1], "originalLine");
+            assert.notProperty(result[1], "originalColumn");
 
             assert.strictEqual(result[2].code, "print( \"world!\" ); // eslint-disable-line semi");
-            assert.strictEqual(result[2].line, 1);
-            assert.strictEqual(result[2].column, 8);
+            assert.strictEqual(result[2].originalLine, 1);
+            assert.strictEqual(result[2].originalColumn, 8);
 
             assert.strictEqual(result[3].code, "print('\\r\\n'); // eslint-disable-line");
-            assert.notProperty(result[3], "line");
-            assert.notProperty(result[3], "column");
+            assert.notProperty(result[3], "originalLine");
+            assert.notProperty(result[3], "originalColumn");
         });
     });
 });
