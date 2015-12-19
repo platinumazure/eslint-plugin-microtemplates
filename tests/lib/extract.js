@@ -17,7 +17,8 @@ var assert = require("chai").assert,
 //-----------------------------------------------------------------------------
 
 var fixtures = {
-    simpleInterpolation: "tests/fixtures/simple-interpolation.html"
+    simpleInterpolation: "tests/fixtures/simple-interpolation.html",
+    twoInterpolationsOneLine: "tests/fixtures/two-interpolations-one-line.html"
 };
 
 //-----------------------------------------------------------------------------
@@ -51,11 +52,46 @@ describe("extract", function () {
 
             assert.strictEqual(result[2].code, "print( \"world!\" ); // eslint-disable-line semi");
             assert.strictEqual(result[2].originalLine, 1);
-            assert.strictEqual(result[2].originalColumn, 8);
+            assert.strictEqual(result[2].originalColumn, 11);
 
             assert.strictEqual(result[3].code, "print('\\r\\n'); // eslint-disable-line");
             assert.notProperty(result[3], "originalLine");
             assert.notProperty(result[3], "originalColumn");
+        });
+    });
+
+    describe("two interpolations on one line", function() {
+        var fileContents;
+
+        beforeEach(function(done) {
+            fs.readFile(fixtures.twoInterpolationsOneLine, "utf-8", function(err, contents) {
+                if (err) throw err;
+                fileContents = contents;
+                done();
+            });
+        });
+
+        it("should extract 5 code snippets", function() {
+            var result = extract(fileContents);
+            console.log(JSON.stringify(result, null, 4));
+
+            assert.strictEqual(result.length, 5);
+
+            assert.strictEqual(result[0].code, "/*global print*/");
+            assert.notProperty(result[0], "originalLine");
+            assert.notProperty(result[0], "originalColumn");
+
+            assert.strictEqual(result[1].code, "print( \"Hello,\" ); // eslint-disable-line semi");
+            assert.strictEqual(result[1].originalLine, 1);
+            assert.strictEqual(result[1].originalColumn, 4);
+
+            assert.strictEqual(result[2].code, "print(' '); // eslint-disable-line");
+            assert.notProperty(result[2], "originalLine");
+            assert.notProperty(result[2], "originalColumn");
+
+            assert.strictEqual(result[3].code, "print( \"world!\" ); // eslint-disable-line semi");
+            assert.strictEqual(result[3].originalLine, 1);
+            assert.strictEqual(result[3].originalColumn, 20);
         });
     });
 });
