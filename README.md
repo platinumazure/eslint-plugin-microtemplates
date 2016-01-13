@@ -4,6 +4,10 @@
 
 ESLint plugin for linting Resig-style microtemplate strings.
 
+**Note**: This plugin is not yet ready for general consumption, and so cannot
+be found on NPM. You may consume this plugin if you like by using a GitHub URL,
+but you do so at your own risk!
+
 ## Installation
 
 You'll first need to install [ESLint](http://eslint.org):
