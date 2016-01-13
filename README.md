@@ -1,5 +1,6 @@
 # eslint-plugin-microtemplates
 
+[![Build Status](https://travis-ci.org/platinumazure/eslint-plugin-microtemplates.svg?branch=master)](https://travis-ci.org/platinumazure/eslint-plugin-microtemplates)
 [![Join the chat at https://gitter.im/platinumazure/eslint-plugin-microtemplates](https://badges.gitter.im/platinumazure/eslint-plugin-microtemplates.svg)](https://gitter.im/platinumazure/eslint-plugin-microtemplates?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ESLint plugin for linting Resig-style microtemplate strings.
