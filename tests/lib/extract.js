@@ -20,7 +20,9 @@ var fixtures = {
     simpleInterpolation: "tests/fixtures/simple-interpolation.html",
     twoInterpolationsOneLine: "tests/fixtures/two-interpolations-one-line.html",
     simpleInterpolationMultiline: "tests/fixtures/simple-interpolation-multiline.html",
-    oneInterpolationTwoLines: "tests/fixtures/one-interpolation-two-lines.html"
+    oneInterpolationTwoLines: "tests/fixtures/one-interpolation-two-lines.html",
+    simpleCodeExecution: "tests/fixtures/simple-code-execution.html",
+    simpleCodeExecutionMultiline: "tests/fixtures/simple-code-execution-multiline.html"
 };
 
 //-----------------------------------------------------------------------------
@@ -169,6 +171,74 @@ describe("extract", function () {
             assert.strictEqual(result[3].code, "print('\\n'); // eslint-disable-line");
             assert.notProperty(result[3], "originalLine");
             assert.notProperty(result[3], "originalColumn");
+        });
+    });
+
+    describe("Simple code execution", function () {
+        var fileContents;
+
+        beforeEach(function(done) {
+            fs.readFile(fixtures.simpleCodeExecution, "utf-8", function(err, contents) {
+                if (err) throw err;
+                fileContents = contents;
+                done();
+            });
+        });
+
+        it("should extract 5 code snippets", function() {
+            var result = extract(fileContents);
+
+            assert.strictEqual(result.length, 5);
+
+            assert.strictEqual(result[0].code, "/*global print*/");
+            assert.notProperty(result[0], "originalLine");
+            assert.notProperty(result[0], "originalColumn");
+
+            assert.strictEqual(result[1].code, " for (var i = 0; i < 5; ++i) { ");
+            assert.strictEqual(result[1].originalLine, 1);
+            assert.strictEqual(result[1].originalColumn, 3);
+
+            assert.strictEqual(result[2].code, "print('\\r\\nHello!\\r\\n'); // eslint-disable-line");
+            assert.notProperty(result[2], "originalLine");
+            assert.notProperty(result[2], "originalColumn");
+
+            assert.strictEqual(result[3].code, " } ");
+            assert.strictEqual(result[3].originalLine, 3);
+            assert.strictEqual(result[3].originalColumn, 3);
+
+            assert.strictEqual(result[4].code, "print('\\r\\n'); // eslint-disable-line");
+            assert.notProperty(result[4], "originalLine");
+            assert.notProperty(result[4], "originalColumn");
+        });
+    });
+
+    describe("Simple code execution (multiple lines)", function () {
+        var fileContents;
+
+        beforeEach(function(done) {
+            fs.readFile(fixtures.simpleCodeExecutionMultiline, "utf-8", function(err, contents) {
+                if (err) throw err;
+                fileContents = contents;
+                done();
+            });
+        });
+
+        it("should extract 3 code snippets", function () {
+            var result = extract(fileContents);
+
+            assert.strictEqual(result.length, 3);
+
+            assert.strictEqual(result[0].code, "/*global print*/");
+            assert.notProperty(result[0], "originalLine");
+            assert.notProperty(result[0], "originalColumn");
+
+            assert.strictEqual(result[1].code, " for (var i = 0; i < 5; ++i) {\r\n    print(\"Hello!\\n\");\r\n} ");
+            assert.strictEqual(result[1].originalLine, 1);
+            assert.strictEqual(result[1].originalColumn, 3);
+
+            assert.strictEqual(result[2].code, "print('\\r\\n'); // eslint-disable-line");
+            assert.notProperty(result[2], "originalLine");
+            assert.notProperty(result[2], "originalColumn");
         });
     });
 });
