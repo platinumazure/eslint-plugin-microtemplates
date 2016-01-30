@@ -136,5 +136,33 @@ describe("Integration tests", function () {
                 assert.strictEqual(message.column, 5);
             });
         });
+
+        describe("Error on second line after text", function () {
+            var report;
+
+            beforeEach(function () {
+                report = cliEngine.executeOnFiles(["tests/fixtures/integration/text-first-error.html"]);
+            });
+
+            it("should contain results with one message", function () {
+                assert.ok(report);
+                assert.ok(report.results);
+                assert.strictEqual(report.results.length, 1);
+                assert.ok(report.results[0]);
+                assert.ok(report.results[0].messages);
+                assert.strictEqual(report.results[0].messages.length, 1);
+            });
+
+            it("should contain correct message", function () {
+                var message = report.results[0].messages[0];
+
+                assert.ok(message);
+                assert.notOk(message.fatal);
+                assert.strictEqual(message.severity, 2);
+                assert.strictEqual(message.ruleId, "no-extra-parens");
+                assert.strictEqual(message.line, 2);
+                assert.strictEqual(message.column, 5);
+            });
+        });
     });
 });
