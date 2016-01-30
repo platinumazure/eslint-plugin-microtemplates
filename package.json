@@ -23,6 +23,9 @@
     "unit-test": "mocha ./tests/**/*.js",
     "test": "npm run lint && npm run unit-test"
   },
+  "dependencies": {
+    "lodash.find": "^4.0.1"
+  },
   "devDependencies": {
     "chai": "^3.4.1",
     "eslint": "^1.10.3",

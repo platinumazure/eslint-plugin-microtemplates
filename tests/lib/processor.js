@@ -15,17 +15,19 @@ var assert = require("chai").assert,
 // Tests
 //-----------------------------------------------------------------------------
 
-describe("preprocess", function() {
-    it("should safely wrap empty file", function() {
-        var result = processor.preprocess("");
-        assert.ok(result);
+describe("processor", function () {
+    describe("preprocess", function() {
+        it("should handle empty files", function() {
+            var result = processor.preprocess("");
+            assert.ok(result);
+        });
     });
-});
 
-describe("postprocess", function() {
-    it("should unwrap empty message array", function() {
-        var messages = [[]];
-        var result = processor.postprocess(messages);
-        assert.strictEqual(result, messages[0]);
+    describe("postprocess", function() {
+        it("should unwrap empty message array", function() {
+            var messages = [[]];
+            var result = processor.postprocess(messages);
+            assert.strictEqual(result, messages[0]);
+        });
     });
 });
