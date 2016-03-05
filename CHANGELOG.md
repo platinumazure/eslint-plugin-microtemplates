@@ -1,3 +1,14 @@
+### 0.2.0
+
+* Docs: Adding CHANGELOG, just has 0.1.0 commits for now (Kevin Partington)
+* Build: Enabling many ESLint rules in the project (Kevin Partington)
+* Upgrade: eslint devDependency to eslint@^2.3.0 (Kevin Partington)
+* Upgrade: Upgrade chai and mocha to latest (Kevin Partington)
+* Docs: Removed no-trailing-spaces from false positive list in README (Kevin Partington)
+* Update: extract now trims leading and trailing whitespace (fixes #6) (Kevin Partington)
+* Docs: Clean up spacing in README example (Jordan Eldredge)
+* Docs: Badges, usage instructions, rules to disable in README (fixes #3) (Kevin Partington)
+
 ### 0.1.0
 
 * Update: Search snippets in reverse order to improve mapping accuracy (Kevin Partington)
