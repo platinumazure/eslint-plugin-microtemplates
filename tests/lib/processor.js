@@ -16,15 +16,15 @@ var assert = require("chai").assert,
 //-----------------------------------------------------------------------------
 
 describe("processor", function () {
-    describe("preprocess", function() {
-        it("should handle empty files", function() {
+    describe("preprocess", function () {
+        it("should handle empty files", function () {
             var result = processor.preprocess("");
             assert.ok(result);
         });
     });
 
-    describe("postprocess", function() {
-        it("should unwrap empty message array", function() {
+    describe("postprocess", function () {
+        it("should unwrap empty message array", function () {
             var messages = [[]];
             var result = processor.postprocess(messages);
             assert.strictEqual(result, messages[0]);

@@ -30,18 +30,18 @@ var fixtures = {
 //-----------------------------------------------------------------------------
 
 describe("extract", function () {
-    describe("simple interpolation", function() {
+    describe("simple interpolation", function () {
         var fileContents;
 
-        beforeEach(function(done) {
-            fs.readFile(fixtures.simpleInterpolation, "utf-8", function(err, contents) {
+        beforeEach(function (done) {
+            fs.readFile(fixtures.simpleInterpolation, "utf-8", function (err, contents) {
                 if (err) throw err;
                 fileContents = contents;
                 done();
             });
         });
 
-        it("should extract 4 code snippets", function() {
+        it("should extract 4 code snippets", function () {
             var result = extract(fileContents);
 
             assert.strictEqual(result.length, 4);
@@ -76,18 +76,18 @@ describe("extract", function () {
         });
     });
 
-    describe("two interpolations on one line", function() {
+    describe("two interpolations on one line", function () {
         var fileContents;
 
-        beforeEach(function(done) {
-            fs.readFile(fixtures.twoInterpolationsOneLine, "utf-8", function(err, contents) {
+        beforeEach(function (done) {
+            fs.readFile(fixtures.twoInterpolationsOneLine, "utf-8", function (err, contents) {
                 if (err) throw err;
                 fileContents = contents;
                 done();
             });
         });
 
-        it("should extract 5 code snippets", function() {
+        it("should extract 5 code snippets", function () {
             var result = extract(fileContents);
 
             assert.strictEqual(result.length, 5);
@@ -122,18 +122,18 @@ describe("extract", function () {
         });
     });
 
-    describe("simple interpolation (multiple lines of text)", function() {
+    describe("simple interpolation (multiple lines of text)", function () {
         var fileContents;
 
-        beforeEach(function(done) {
-            fs.readFile(fixtures.simpleInterpolationMultiline, "utf-8", function(err, contents) {
+        beforeEach(function (done) {
+            fs.readFile(fixtures.simpleInterpolationMultiline, "utf-8", function (err, contents) {
                 if (err) throw err;
                 fileContents = contents;
                 done();
             });
         });
 
-        it("should extract 6 code snippets", function() {
+        it("should extract 6 code snippets", function () {
             var result = extract(fileContents);
 
             assert.strictEqual(result.length, 6);
@@ -182,18 +182,18 @@ describe("extract", function () {
         });
     });
 
-    describe("One interpolation on two lines", function() {
+    describe("One interpolation on two lines", function () {
         var fileContents;
 
-        beforeEach(function(done) {
-            fs.readFile(fixtures.oneInterpolationTwoLines, "utf-8", function(err, contents) {
+        beforeEach(function (done) {
+            fs.readFile(fixtures.oneInterpolationTwoLines, "utf-8", function (err, contents) {
                 if (err) throw err;
                 fileContents = contents;
                 done();
             });
         });
 
-        it("should extract 4 code snippets", function() {
+        it("should extract 4 code snippets", function () {
             var result = extract(fileContents);
 
             assert.strictEqual(result.length, 4);
@@ -231,15 +231,15 @@ describe("extract", function () {
     describe("Simple code execution", function () {
         var fileContents;
 
-        beforeEach(function(done) {
-            fs.readFile(fixtures.simpleCodeExecution, "utf-8", function(err, contents) {
+        beforeEach(function (done) {
+            fs.readFile(fixtures.simpleCodeExecution, "utf-8", function (err, contents) {
                 if (err) throw err;
                 fileContents = contents;
                 done();
             });
         });
 
-        it("should extract 5 code snippets", function() {
+        it("should extract 5 code snippets", function () {
             var result = extract(fileContents);
 
             assert.strictEqual(result.length, 5);
@@ -283,8 +283,8 @@ describe("extract", function () {
     describe("Simple code execution (multiple lines)", function () {
         var fileContents;
 
-        beforeEach(function(done) {
-            fs.readFile(fixtures.simpleCodeExecutionMultiline, "utf-8", function(err, contents) {
+        beforeEach(function (done) {
+            fs.readFile(fixtures.simpleCodeExecutionMultiline, "utf-8", function (err, contents) {
                 if (err) throw err;
                 fileContents = contents;
                 done();
