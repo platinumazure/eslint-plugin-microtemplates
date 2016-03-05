@@ -66,7 +66,6 @@ Here are some rules that may be worth disabling for microtemplates:
 ```json
 {
     "rules": {
-        "no-undef": 0,
-        "no-trailing-spaces": 0
+        "no-undef": 0
     }
 }
